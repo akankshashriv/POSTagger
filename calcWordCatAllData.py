@@ -61,5 +61,3 @@ class CalcWordCatAllData:
 
                     self.lastCat = '*'.join(row[1:])
                     self.c += 1
-                    print self.c
-        print self.newtags
