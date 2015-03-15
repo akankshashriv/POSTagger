@@ -66,4 +66,4 @@ for root, dirs, files in os.walk("Accuracy/"):
        else:
            avg += float(c[0])
 
-print avg/10, avg_all/10
+print avg/10, avg_all/10, avg_tri/10

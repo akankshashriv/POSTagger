@@ -131,4 +131,4 @@ class CalculateEachFrequency:
                     # Consider all tags of the previous word
                     self.lastCat = '*'.join(row[1:])
                     self.c += 1
-        print self.newtags, self.c
+        print "New tags found : ", self.newtags
