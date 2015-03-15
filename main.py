@@ -12,26 +12,26 @@ from classifyTestDataTrigram import ClassifyTestDataTrigram
 
 tagset = BrillsTagset().getTagset()
 
-# if os.path.isfile("orderedtags.csv"):
-#     os.remove("orderedtags.csv")
-# if os.path.isfile("errorlog.txt"):
-#     os.remove("errorlog.txt")
-#
+if os.path.isfile("orderedtags.csv"):
+    os.remove("orderedtags.csv")
+if os.path.isfile("errorlog.txt"):
+    os.remove("errorlog.txt")
+
 fileAllData = "orderedtags.csv"
-#
-# c = 0
-# count = 0
-# for root, dirs, files in os.walk("../WSJ-2-12/02"):
-#     for f in files:
-#         filepath = os.path.join(root, f)
-#         combine = CombineAll(filepath, fileAllData)
-#         count += combine.getsentcount()
-#         c += 1
-#     print c
-# print count
+
+c = 0
+count = 0
+for root, dirs, files in os.walk("../WSJ-2-12/02"):
+    for f in files:
+        filepath = os.path.join(root, f)
+        combine = CombineAll(filepath, fileAllData)
+        count += combine.getsentcount()
+        c += 1
+    print c
+print count
 
 # Split Data from orderedtags.csv
-# split = SplitData(fileAllData, "Datasets", count)
+split = SplitData(fileAllData, "Datasets", count)
 
 # Calculate Frequencies of words in different categories in 100% of data
 wordCatFreqAll = CalcWordCatAllData(fileAllData, "Datasets", tagset)
@@ -43,20 +43,22 @@ for n in xrange(0, 10):
     # Calculate Probabilities for each dataset
     prob = CalculateProb("Datasets", n)
 
-    # Classify Data in each set
-    # classify = ClassifyTestDataBigram("Datasets", n, "p_cat1_cat2.pkl", "p_word_cat.pkl", "WordFreq.pkl", "accuracy" + str(n) + ".txt")
-    # classify = ClassifyTestDataBigram("Datasets", n, "p_cat1_cat2.pkl", "p_word_cat_all.pkl", "WordFreq.pkl", "accuracy" + str(n) + "_all.txt")
+    # Classify Data in each set using Bigrams and some unseen words
+    classify = ClassifyTestDataBigram("Datasets", n, "p_cat1_cat2.pkl", "p_word_cat.pkl", "WordFreq.pkl", "accuracy" + str(n) + ".txt")
+    # Classify Data in each set using Bigrams and no unseen words
+    classify = ClassifyTestDataBigram("Datasets", n, "p_cat1_cat2.pkl", "p_word_cat_all.pkl", "WordFreq.pkl", "accuracy" + str(n) + "_all.txt")
+    # Classify Data in each set using Trigrams and some unseen words
     classify = ClassifyTestDataTrigram("Datasets", n, "p_cat1_cat2_cat3.pkl", "p_word_cat.pkl", "WordFreq.pkl", "accuracy" + str(n) + "_alltrigram.txt")
 
 avg = 0.0
 avg_all = 0.0
 avg_tri = 0.0
+# Calculate average accuracies after reading all acuracies from the file.
 for root, dirs, files in os.walk("Accuracy/"):
    for f in files:
        filepath = os.path.join(root, f)
        pointer = open(filepath, "r")
        c = map(float, pointer)
-       print c
        if "all" in f:
            avg_all += float(c[0])
        elif "tri" in f:

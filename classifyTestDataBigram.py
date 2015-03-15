@@ -39,10 +39,13 @@ class ClassifyTestDataBigram:
         self.classify()
         self.accuracy()
 
+    # Function that writes accuracy in a txt file
     def accuracy(self):
         f = open("Accuracy/" + self.fname, 'wb')
         f.write(str(float(self.correctcountBi * 100)/self.allcount))
 
+    # Function that verifies the new tags for each word against original tags
+    # counted positively if new tag is any of the multiple tags
     def verify(self):
         fileoutput = self.folder + "/" + str(self.n) + "/taggedoutput.csv"
         csvdataset = open(fileoutput, 'a')
@@ -53,6 +56,7 @@ class ClassifyTestDataBigram:
             wr.writerow([each, self.classifiedBi[each]])
             self.allcount += 1
 
+    # Function that implements the Viterbi algo
     def runViterbi(self):
         scoreBi = {}
         backpointerBi = {}
@@ -71,9 +75,9 @@ class ClassifyTestDataBigram:
         c = 1
         prevword = self.sentence[0]
         for each in self.sentence[1:]:
-            for tag in ClassifyTestDataBigram.tagset: #v
+            for tag in ClassifyTestDataBigram.tagset:
                 maxscoreBi = 0
-                for tag2 in ClassifyTestDataBigram.tagset: #u
+                for tag2 in ClassifyTestDataBigram.tagset:
                     if each in list(self.word.keys()):
                         p1 = self.p_word_cat[each][tag]
                     else:
@@ -109,6 +113,8 @@ class ClassifyTestDataBigram:
         # for each in self.sentence:
         #     print each + "/" + self.classifiedBi[each] + "//" + self.classifiedTri[each]
 
+    # Function that reads the test data file - test.csv and forms sentences using the EOS marker
+    # It then sends the sentence to be classified, after which it starts reading a new sentence
     def classify(self):
         filetest = self.folder + "/" + str(self.n) + "/test.csv"
         self.sentence = []

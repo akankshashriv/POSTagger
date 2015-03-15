@@ -1,9 +1,12 @@
 __author__ = 'akanksha'
 
+# This file operates the same way as calcFreq.py and calculates the frequencies of words and words in a given category
+# This only runs once, and is run on 100% of words.
+
 import csv
 import cPickle
 
-
+# Function to dump Dictionary into pickle file
 def dumpDicts(dictionary, fname):
     output = open(fname, 'wb')
     cPickle.dump(dictionary, output)
@@ -13,8 +16,10 @@ def dumpDicts(dictionary, fname):
 class CalcWordCatAllData:
 
     def __init__(self, filename, folder, tagset):
+        # not creating a static instance of tagset as this class will use only one instance.
         self.tagset = tagset
         self.folder = folder
+        # Name of the file containing 100% words - orderedtags.csv
         self.filename = filename
 
         self.word = {}

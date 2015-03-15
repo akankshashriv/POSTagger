@@ -32,9 +32,11 @@ class CombineAll:
 
         self.getfilecontents()
 
+    # count of sentences read
     def getsentcount(self):
         return self.sent_count
 
+    # the function that reads the files and appends them into a csv
     def getfilecontents(self):
         fread = open(self.filename)
         string = []
@@ -67,6 +69,7 @@ class CombineAll:
                     else:
                         word_tag = word_tag + each.split('|')
 
+                # Ignore chunking boundaries
                 if '[' not in word_tag and ']' not in word_tag:
                     word_tag[0].replace('*slashhere*', '\/')
                     if len(word_tag) > 2:

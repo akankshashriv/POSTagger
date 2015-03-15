@@ -1,4 +1,7 @@
 __author__ = 'akanksha'
+# Class that splits the whole data into 10 parts, and stores all parts in a list.
+# We then simply use each part as a test data, and rest of the parts as the training data.
+# Make numbered folders for each dataset (0 to 9) and store train + test sets in it in csv format
 import csv
 import os
 import shutil

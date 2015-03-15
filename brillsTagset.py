@@ -11,6 +11,7 @@ class BrillsTagset:
 
         tagfile = open("brill_tagset.txt")
 
+        # Read the tags from the file and store only tags in "tagset", and tag + description in "tagdesc"
         for line in tagfile:
             string = line.split(' ')
             self.tagdesc[' '.join(string[1:])] = string[0]

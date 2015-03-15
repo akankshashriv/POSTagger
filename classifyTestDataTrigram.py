@@ -42,10 +42,13 @@ class ClassifyTestDataTrigram:
         self.classify()
         self.accuracy()
 
+    # Function that writes accuracy in a txt file
     def accuracy(self):
         f = open("Accuracy/" + self.fname, 'wb')
         f.write(str(float(self.correctcountTri * 100)/self.allcount))
 
+    # Function that verifies the new tags for each word against original tags
+    # counted positively if new tag is any of the multiple tags
     def verify(self):
         fileoutput = self.folder + "/" + str(self.n) + "/taggedoutput_trigram.csv"
         csvdataset = open(fileoutput, 'a')
@@ -56,6 +59,7 @@ class ClassifyTestDataTrigram:
             wr.writerow([each, self.classifiedTri[each]])
             self.allcount += 1
 
+    # Function that implements Viterbi for a trigram tagger
     def runViterbi(self):
         scoreTri = {}
         backpointerTri = {}
@@ -131,6 +135,8 @@ class ClassifyTestDataTrigram:
             prevtag = self.classifiedTri[each]
             c += 1
 
+    # Function that reads the test data file - test.csv and forms sentences using the EOS marker
+    # It then sends the sentence to be classified, after which it starts reading a new sentence
     def classify(self):
         filetest = self.folder + "/" + str(self.n) + "/test.csv"
         self.sentence = []
