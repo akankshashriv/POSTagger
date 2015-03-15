@@ -55,15 +55,15 @@ avg_all = 0.0
 avg_tri = 0.0
 # Calculate average accuracies after reading all acuracies from the file.
 for root, dirs, files in os.walk("Accuracy/"):
-   for f in files:
-       filepath = os.path.join(root, f)
-       pointer = open(filepath, "r")
-       c = map(float, pointer)
-       if "all" in f:
-           avg_all += float(c[0])
-       elif "tri" in f:
-           avg_tri += float(c[0])
-       else:
-           avg += float(c[0])
+    for f in files:
+        filepath = os.path.join(root, f)
+        pointer = open(filepath, "r")
+        c = map(float, pointer)
+        if "all" in f:
+            avg_all += float(c[0])
+        elif "tri" in f:
+            avg_tri += float(c[0])
+        else:
+            avg += float(c[0])
 
 print avg/10, avg_all/10, avg_tri/10
