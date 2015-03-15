@@ -1,0 +1,48 @@
+CC Coordinating conjunction
+CD Cardinal number
+DT Determiner
+EX Existential there
+FW Foreign word
+IN Preposition/subord. conjunction
+JJ Adjective
+JJR Adjective, comparative
+JJS Adjective, superlative
+LS List item marker
+MD Modal
+NN Noun, singular or mass
+NNS Noun, plural
+NNP Proper noun, singular
+NNPS Proper noun, plural
+PDT Predeterminer
+POS Possessive ending
+PRP Personal pronoun
+PRP$ Possessive pronoun
+RB Adverb
+RBR Adverb, comparative
+RBS Adverb, superlative
+RP Particle
+SYM Symbol (mathematical or scientific)
+TO to
+UH Interjection
+VB Verb, base form
+VBD Verb, past tense
+VBG Verb, gerund/present participle
+VBN Verb, past participle
+VBP Verb, non-3rd ps. sing. present
+VBZ Verb, 3rd ps. sing. present
+WDT wh-determiner
+WP wh-pronoun
+WP$ Possessive wh-pronoun
+WRB wh-adverb
+# Pound sign
+$ Dollar sign
+. Sentence-final punctuation
+, Comma
+: Colon, semi-colon
+( Left bracket character
+) Right bracket character
+" Straight double quote
+` Left open single quote
+" Left open double quote
+' Right close single quote
+" Right close double quote
